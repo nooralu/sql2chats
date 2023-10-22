@@ -1,6 +1,5 @@
 import GridLayout from "react-grid-layout";
-import { EChartsOption } from "echarts";
-import { ChatWidget, IWidget } from "../widget";
+import { ChatWidget, IWidget, MapWidget } from "../widget";
 
 type Config = {
   cols: number;
@@ -20,12 +19,24 @@ function Stage({ layout, widgets, config, onLayoutChange }: Props) {
     return layout.map((l) => {
       const widget = widgets.find((w) => w.id === l.i);
       if (widget) {
+        const { type } = widget;
+        let widgetComponent;
+        switch (type) {
+          case "chat":
+            widgetComponent = <ChatWidget {...widget} />;
+            break;
+          case "map":
+            widgetComponent = <MapWidget {...widget} />;
+            break;
+          default:
+            widgetComponent = <div>Unknown widget type</div>;
+        }
         return (
           <div
             key={l.i}
             className="backdrop-blur-md bg-white/30 shadow-md border rounded-md overflow-hidden p-2"
           >
-            <ChatWidget option={widget.payload as EChartsOption} />
+            {widgetComponent}
           </div>
         );
       } else {
