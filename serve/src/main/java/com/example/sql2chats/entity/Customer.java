@@ -1,10 +1,9 @@
 package com.example.sql2chats.entity;
 
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Entity;
+import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 public class Customer {
     @Id

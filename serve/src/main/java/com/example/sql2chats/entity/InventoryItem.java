@@ -1,7 +1,9 @@
 package com.example.sql2chats.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 public class InventoryItem {
     @Id

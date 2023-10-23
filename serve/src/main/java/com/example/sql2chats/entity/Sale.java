@@ -1,21 +1,25 @@
 package com.example.sql2chats.entity;
 
-import javax.persistence.*;
-import java.util.Date;
+import jakarta.persistence.*;
+import lombok.Data;
 
+import java.time.LocalDateTime;
+
+@Data
 @Entity
 public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date saleDate;
+
+    private LocalDateTime saleDate;
 
     @ManyToOne
     private Product product;
 
-    private int quantity;
+    private Long quantity;
 
-    private double unitPrice;
+    private Long unitPrice;
 
     @ManyToOne
     private Customer customer;
