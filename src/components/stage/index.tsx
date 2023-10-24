@@ -47,11 +47,11 @@ function Stage({ layout, widgets, config, onLayoutChange }: Props) {
 
   return (
     <GridLayout
-      className="layout"
+      className="w-full h-full"
       layout={layout}
       cols={config.cols}
       rowHeight={config.rowHeight}
-      width={window.innerWidth}
+      width={config.width}
       onLayoutChange={onLayoutChange}
     >
       {generateDOM()}

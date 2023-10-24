@@ -32,16 +32,14 @@ const items: MenuItem[] = [
 ];
 
 function Root() {
-  const [collapsed, setCollapsed] = useState(false);
-
   function handleSelect(item: MenuItem) {
     // TODO: 路由跳转
     console.log(item);
   }
 
   return (
-    <Layout className='min-h-screen'>
-      <Sider theme="light" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+    <Layout className='min-h-screen overflow-hidden'>
+      <Sider theme="light">
         <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" items={items} onSelect={handleSelect} />
       </Sider>
       <Layout>

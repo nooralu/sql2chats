@@ -7,11 +7,18 @@ import {
 import App from './App.tsx'
 import Root from './routes/Root.tsx';
 import './index.css'
+import VisualizationPage from './pages/VisualizationPage.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    children: [
+      {
+        path: "visualization",
+        element: <VisualizationPage />,
+      },
+    ],
   },
 ]);
 
