@@ -1,7 +1,6 @@
-import { useState } from 'react';;
 import type { MenuProps } from 'antd';
 import { Layout, Menu } from 'antd';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const { Content, Sider } = Layout;
 
@@ -10,31 +9,33 @@ type MenuItem = Required<MenuProps>['items'][number];
 // TODO: 加图标
 const items: MenuItem[] = [
   {
-    key: '1',
+    key: 'product',
     label: '商品管理',
   },
   {
-    key: '2',
+    key: 'stock',
     label: '库存管理',
   },
   {
-    key: '3',
+    key: 'purchase',
     label: '采购管理',
   },
   {
-    key: '4',
-    label: '订单管理',
+    key: 'sale',
+    label: '销售管理',
   },
   {
-    key: '6',
+    key: 'visualization',
     label: '可视化',
   }
 ];
 
 function Root() {
+  const navigate = useNavigate();
+
   function handleSelect(item: MenuItem) {
-    // TODO: 路由跳转
-    console.log(item);
+    // 根据 key 跳转到对应的页面
+    navigate("/" + item?.key!);
   }
 
   return (

@@ -1,26 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import App from './App.tsx'
-import Root from './routes/Root.tsx';
+import { RouterProvider } from "react-router-dom";
 import './index.css'
-import VisualizationPage from './pages/VisualizationPage.tsx';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    children: [
-      {
-        path: "visualization",
-        element: <VisualizationPage />,
-      },
-    ],
-  },
-]);
+import router from './routes'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
