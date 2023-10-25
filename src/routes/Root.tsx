@@ -35,13 +35,13 @@ function Root() {
 
   function handleSelect(item: MenuItem) {
     // 根据 key 跳转到对应的页面
-    navigate("/" + item?.key!);
+    navigate("/" + item?.key);
   }
 
   return (
     <Layout className='min-h-screen overflow-hidden'>
       <Sider theme="light">
-        <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" items={items} onSelect={handleSelect} />
+        <Menu theme="light" defaultSelectedKeys={['product']} mode="inline" items={items} onSelect={handleSelect} />
       </Sider>
       <Layout>
         <Content className='min-h-screen bg-white'>
