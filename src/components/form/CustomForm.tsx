@@ -1,21 +1,25 @@
-import { Form, Row, Col, Input, Button, DatePicker } from 'antd';
+import {Button, Col, DatePicker, Form, Input, Row} from 'antd';
 import AddressCascader from './item/AddressCascader';
+import {Rule} from 'antd/es/form';
+import { Store } from 'antd/es/form/interface';
 
 interface FormItem {
   label: string
   name: string
   type: string
-  rules: any[]
+  rules: Rule[]
 }
 
-type Props = {
+type Props<Item> = {
   items: FormItem[],
-  onFinish: (values: any) => void
+  onFinish: (values: Item) => void
+  initialValues?: Item,
 }
 
-function CustomForm({ items, onFinish }: Props) {
+function CustomForm<Item extends Store>({items, onFinish, initialValues}: Props<Item>) {
   return <Form
     layout="vertical"
+    initialValues={initialValues}
     onFinish={onFinish}
   >
     <Row gutter={16}>
@@ -46,19 +50,19 @@ function mapFormItem(item: FormItem) {
 
   switch (item.type) {
     case 'input': {
-      component = <Input placeholder={item.label} />;
+      component = <Input placeholder={item.label}/>;
       break;
     }
     case 'number': {
-      component = <Input type="number" placeholder={item.label} min={1} />;
+      component = <Input type="number" placeholder={item.label} min={1}/>;
       break;
     }
     case 'date': {
-      component = <DatePicker />;
+      component = <DatePicker/>;
       break;
     }
     case 'address': {
-      component = <AddressCascader />;
+      component = <AddressCascader/>;
       break;
     }
     default: {

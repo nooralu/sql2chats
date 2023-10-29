@@ -1,5 +1,6 @@
 import { Space } from "antd";
 import FormWrapper from "./form/FormWrapper";
+import React from "react";
 
 type Props = {
   title: string;
