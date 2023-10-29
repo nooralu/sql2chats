@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FloatButton } from "antd";
 import GridLayout from "react-grid-layout";
 import Stage from "../components/stage";
+import AddForm from "../components/stage/AddForm";
 
 function VisualizationPage() {
   const [widgets, setWidgets] = useState([
@@ -90,6 +91,8 @@ function VisualizationPage() {
     { i: "d", x: 1, y: 1, w: 2, h: 1 },
   ]);
 
+  const [openForm, setOpenForm] = useState(false);
+
   function handleLayoutChange(newLayout: GridLayout.Layout[]) {
     console.log(newLayout);
   }
@@ -97,7 +100,7 @@ function VisualizationPage() {
   return (
     <div className="w-full h-full bg-slate-100 overflow-hidden">
       <FloatButton.Group shape="circle" style={{ right: 10 }}>
-        <FloatButton description="新增" />
+        <FloatButton description="新增" onClick={() => setOpenForm(true)} />
         <FloatButton description="背景" />
         <FloatButton description="预览" />
         <FloatButton description="保存" />
@@ -108,6 +111,7 @@ function VisualizationPage() {
         config={{ cols: 3, rowHeight: 100, width: window.innerWidth - 200 }}
         onLayoutChange={handleLayoutChange}
       />
+      <AddForm open={openForm} onClose={() => setOpenForm(false)}/>
     </div>
   );
 }
